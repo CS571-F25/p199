@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { HashRouter, Route, Routes } from 'react-router'
 import './App.css'
+import Home from './components/Home'
+import AboutMe from './components/AboutMe'
 
 function App() {
   const [count, setCount] = useState(0)
