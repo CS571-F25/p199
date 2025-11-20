@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { Container, Card, Button } from "react-bootstrap";
 
-export default function AboutMe() {
+export default function AquariumBuilder() {
 
     const navigate = useNavigate();
 
@@ -13,10 +13,10 @@ export default function AboutMe() {
         </div>
         <Container className="my-5">
             <Card className="h-100 shadow-sm">
-                <h1 className="mb-4 text-center">About Me</h1>
+                <h1 className="mb-4 text-center">Aquarium Builder</h1>
 
                 <p className="text-center">
-                    Haven't written this part yet but it's mainly just text and links and stuff.
+                    Haven't finished this part yet
                 </p>
             </Card>
         </Container>

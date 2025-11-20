@@ -1,16 +1,18 @@
 import { HashRouter, Route, Routes } from 'react-router'
-import { useState } from 'react'
 import './App.css'
 import Home from './components/Home'
 import AboutMe from './components/AboutMe'
+import Explore from './components/Explore'
+import AquariumBuilder from './components/AquariumBuilder'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return <HashRouter>
     <Routes>
-      <Route path="/" element={ <Home/> }></Route>
-      <Route path="/about" element={ <AboutMe/> }></Route>
+      <Route path="/" element={ <Home/> }/>
+      <Route path="/about" element={ <AboutMe/> }/>
+      <Route path="/explore" element={ <Explore/> }/>
+      <Route path="/aquarium-builder" element={ <AquariumBuilder/> }/>
     </Routes>
   </HashRouter>
 }
