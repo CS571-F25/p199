@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { HashRouter, Route, Routes } from 'react-router'
+import { Route, Routes, HashRouter } from 'react-router'
 import './App.css'
 import Home from './components/Home'
 import AboutMe from './components/AboutMe'
@@ -10,7 +10,7 @@ function App() {
   return <HashRouter>
     <Routes>
       <Route path="/" element={ <Home/> }></Route>
-      <Route path="/about" element={<AboutMe/>}></Route>
+      <Route path="/about" element={ <AboutMe/> }></Route>
     </Routes>
   </HashRouter>
 }
