@@ -15,7 +15,7 @@ export default function SpeciesList() {
 
     const [numDepthCells, setNumDepthCells] = useState(0);
 
-    // one-time random offsets per species (stable across re-renders)
+
     const offsetLookup = useMemo(() => {
         const map = new Map();
         speciesData.forEach(sp => {
@@ -28,20 +28,20 @@ export default function SpeciesList() {
         return map;
     }, []);
 
-    // one-time random justify per visual row (stable while component is mounted)
+
     const justifyLookup = useRef(new Map());
 
-    // inputs
+
     const [searchName, setSearchName] = useState("");
     const [searchSciName, setSearchSciName] = useState("");
     const [searchTemp, setSearchTemp] = useState("");
 
-    // normalizing input
+
     function normalize(str) {
         return (str ?? "").trim().toLowerCase();
     }
 
-    // sorting and filtering
+
     const sortedAndFilteredSpecies = useMemo(() => {
         const nameTerm = normalize(searchName);
         const sciTerm = normalize(searchSciName);
@@ -65,7 +65,7 @@ export default function SpeciesList() {
         });
     }, [searchName, searchSciName, searchTemp]);
 
-    // use stable offsets instead of recomputing random each render
+
     const speciesWithOffsets = sortedAndFilteredSpecies.map((sp) => {
         const offsets = offsetLookup.get(sp.id) || {
             offsetX: 0,
@@ -78,7 +78,7 @@ export default function SpeciesList() {
         };
     });
 
-    // bin species into 100m bins
+
     function binSpeciesByDepth(allSpecies) {
         const bins = Array.from({ length: numDepthCells || 0 }, (_, i) => ({
             min: i * 100,
@@ -96,7 +96,7 @@ export default function SpeciesList() {
         return bins;
     }
 
-    // helper: break a slice's species into visual rows of length 2–3 (DETERMINISTIC)
+
     function groupSliceIntoVisualRows(sliceSpecies) {
         const visualRows = [];
         const sorted = [...sliceSpecies].sort((a, b) => a.avgDepthM - b.avgDepthM);
@@ -109,10 +109,8 @@ export default function SpeciesList() {
             let rowLength;
 
             if (remaining <= 3) {
-                // final row: just take what’s left (1–3)
                 rowLength = remaining;
             } else {
-                // alternate between 2 and 3: 2,3,2,3,...
                 rowLength = (visualRows.length % 2 === 0) ? 2 : 3;
             }
 
@@ -123,11 +121,9 @@ export default function SpeciesList() {
         return visualRows;
     }
 
-    // each bin → 10 fixed 10m slices; each slice → multiple visual rows
     function makeRowsForBin(speciesInBin) {
         const slices = Array.from({ length: 10 }, () => []);
 
-        // assign species to 10m slices inside the 100m bin
         speciesInBin.forEach(sp => {
             const withinBin = sp.avgDepthM % 100;
             let sliceIdx = Math.floor(withinBin / 10);
@@ -136,7 +132,6 @@ export default function SpeciesList() {
             slices[sliceIdx].push(sp);
         });
 
-        // for each 10m slice, break its species into visual rows
         const sliceRows = slices.map(sliceSpecies => groupSliceIntoVisualRows(sliceSpecies));
 
         return sliceRows;
@@ -160,7 +155,6 @@ export default function SpeciesList() {
         "justify-content-evenly"
     ];
 
-    // helper to get a stable random justify for a given visual row
     function getJustifyForRow(visualRow) {
         const rowKey = visualRow.map(sp => sp.id).join("-");
         const map = justifyLookup.current;
@@ -212,12 +206,10 @@ export default function SpeciesList() {
             <Col>
                 {binsWithRows.map((bin, binIdx) => (
                     <div key={binIdx} className="mb-3">
-                        {/* 100m bin label */}
                         <div className="fw-bold small mb-4">
                             {bin.min}–{bin.max} m
                         </div>
 
-                        {/* 10 slices of 10m inside this 100m bin */}
                         {bin.rows.map((sliceRows, sliceIdx) => {
                             const sliceMin = bin.min + sliceIdx * 10;
                             const sliceMax = sliceMin + 10;

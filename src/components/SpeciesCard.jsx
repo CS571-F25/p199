@@ -17,13 +17,13 @@ const temperatureVariant = (temp) => {
     default:
       return "white";
   }
-};
+  };
 
-export default function SpeciesCard({
-  species,
-  isInAquarium = false,
-  onToggleInAquarium
-}) {
+  export default function SpeciesCard({
+    species,
+    isInAquarium = false,
+    onToggleInAquarium
+  }) {
   const handleToggle = (e) => {
     e.stopPropagation();
     if (onToggleInAquarium) {

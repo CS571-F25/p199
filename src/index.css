@@ -29,7 +29,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
 
-  background-color: #609090;
+  background-color: rgb(0, 0, 0);
 }
 
 .body-explore {
