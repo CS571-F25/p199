@@ -1,15 +1,19 @@
 import { Container, Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
     const navigate = useNavigate();
 
     const [data, setData] = useState([]);
+
+    useEffect(() => {
+            document.body.style.backgroundColor = `rgb(0, 0, 0)`;
+        })
+
     return <Container className="d-flex justify-content-center align-items-center vh-100">
-        <Card className="p-5 shadow-lg text-center" style={{ width: "40rem" }}>
-            <h2 className="mb-5">DiverLens</h2>
-            <p className="text-muted mb-4">Features:</p>
+        <Card className="p-5 shadow-lg text-center" style={{ width: "80rem", height: "30rem", backgroundColor: "rgba(0, 6, 30, 0.98)", color: "white" }}>
+            <h2 className="mb-5 fw-bold">DiverLens</h2>
             <div className="d-flex gap-5 justify-content-center">
                 <Button variant="primary" className="mb-3 fs-5" style={{ width: "15rem"}} onClick={() => navigate("/explore")}>
                     Explore

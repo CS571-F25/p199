@@ -12,11 +12,16 @@ export default function AboutMe() {
             </Button>
         </div>
         <Container className="my-5">
-            <Card className="h-100 shadow-sm">
-                <h1 className="mb-4 text-center">About Me</h1>
+            <Card className="h-100 shadow-sm" style={{ backgroundColor: "rgba(0, 6, 30, 0.98)", color: "white" }}>
+                <h3 className="mb-4 text-center">About Me</h3>
 
                 <p className="text-center">
-                    Haven't written this part yet but it's mainly just text and links and stuff.
+                    I'm Will Macaulay, a computer science and data science student at UW Madison. 
+                    I'm currently a sophomore and am planning on graduating in May 2028. Growing up on the 
+                    West coast of the US, I've always between interested in the ocean and aquatic life, and 
+                    I tend to visit aquariums often. This web app is intended to pique the interest of those
+                    who would like to explore the depths of the ocean and see how well different species could
+                    coexist in an aquarium.
                 </p>
             </Card>
         </Container>

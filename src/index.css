@@ -28,6 +28,12 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  background-color: #609090;
+}
+
+.body-explore {
+  background-color: #5050b0;
 }
 
 h1 {
@@ -52,6 +58,16 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+.water-overlay {
+  position: fixed;
+  inset: 0;                     /* top:0 right:0 bottom:0 left:0 */
+  background-image: url("./data/water_effect.gif");  /* your gif path */
+  background-repeat: repeat;
+  background-size: 1400px;
+  opacity: 0.1;                /* transparency */
+  pointer-events: none;        /* clicks pass through */
+  z-index: 0;
 }
 
 @media (prefers-color-scheme: light) {
